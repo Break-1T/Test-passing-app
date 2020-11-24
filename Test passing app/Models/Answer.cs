@@ -8,10 +8,19 @@ namespace Test_passing_app.Models
     {
         public Answer(string answer)
         {
-            this.Content = answer;
+            this._content = answer;
             IsTrue = false;
         }
-        public string Content { get; set; }
+
+        private string _content;
+
+        public string Content
+        {
+            get
+            {
+                return _content;
+            }
+        }
         public bool IsTrue { get; set; }
     }
 }
