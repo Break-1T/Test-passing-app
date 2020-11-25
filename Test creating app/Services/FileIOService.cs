@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
+using Test_creating_app.Interfaces;
+using Test_creating_app.Models;
 
-namespace Test_creating_app.Models
+namespace Test_creating_app.Services
 {
-    class FileIOService
+    class FileIOService : IFileIOService<List<QuestionPattern>>
     {
         public FileIOService(string Path)
         {
