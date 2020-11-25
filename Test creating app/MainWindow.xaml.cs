@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Test_creating_app.Dialog_Boxes;
 
 namespace Test_creating_app
 {
@@ -23,6 +24,15 @@ namespace Test_creating_app
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public string Path { get; set; }
+
+        private void CreateItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            CreateWindow createWindow = new CreateWindow(this);
+            createWindow.Owner = this;
+            createWindow.Show();
         }
     }
 }
