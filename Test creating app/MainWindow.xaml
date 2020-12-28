@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test_creating_app"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,8 +14,38 @@
         <Menu Grid.Row="0">
             <MenuItem Header="File" FontSize="15" FontWeight="Bold" Cursor="Hand">
                 <MenuItem x:Name="CreateItem" Header="Create" Cursor="Hand" Click="CreateItem_OnClick"/>
-                <MenuItem x:Name="SaveItem" Header="Save" Cursor="Hand"/>
+                <MenuItem x:Name="LoadItem" Header="Load" Cursor="Hand" Click="LoadItem_Click"/>
+                <MenuItem x:Name="SaveItem" Header="Save" Cursor="Hand" Click="SaveItem_OnClick"/>
             </MenuItem>
         </Menu>
+        <ScrollViewer Grid.Row="1">
+                <ListView x:Name="QuestionsList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel Orientation="Vertical">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Введите вопрос: " FontSize="20"/>
+                                    <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" Text="{Binding Question}"/>
+                                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+                                        <Button Content="Добавить вариант ответа"/>
+                                    </Grid>
+                                    <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="Добавить вопрос"/>
+                                </Grid>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+        </ScrollViewer>
     </Grid>
 </Window>

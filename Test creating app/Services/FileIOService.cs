@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
@@ -8,7 +9,7 @@ using Test_creating_app.Models;
 
 namespace Test_creating_app.Services
 {
-    class FileIOService : IFileIOService<List<QuestionPattern>>
+    public class FileIOService : IFileIOService<BindingList<QuestionPattern>>
     {
         public FileIOService(string Path)
         {
@@ -17,22 +18,25 @@ namespace Test_creating_app.Services
 
         private readonly string _path;
 
-        public List<QuestionPattern> LoadData()
+        public BindingList<QuestionPattern> LoadData()
         {
             if (!File.Exists(_path))
             {
                 File.Create(_path).Dispose();
-                return new List<QuestionPattern>();
+                return new BindingList<QuestionPattern>()
+                {
+                    new QuestionPattern("Вопрос", "1-й ответ", "2-й ответ")
+                };
             }
 
             using (StreamReader myReader = File.OpenText(_path))
             {
                 var filetext = myReader.ReadToEnd();
-                return JsonConvert.DeserializeObject<List<QuestionPattern>>(filetext);
+                return JsonConvert.DeserializeObject<BindingList<QuestionPattern>>(filetext);
             }
         }
 
-        public void SaveData(List<QuestionPattern> questions)
+        public void SaveData(BindingList<QuestionPattern> questions)
         {
             using (StreamWriter streamWriter = File.CreateText(_path))
             {

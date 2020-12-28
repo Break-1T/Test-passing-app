@@ -4,8 +4,15 @@ using System.Text;
 
 namespace Test_creating_app.Models
 {
-    class QuestionPattern
+    public class QuestionPattern
     {
+        public QuestionPattern()
+        {
+            this.FirstVar = new Answer("");
+            this.SecondVar = new Answer("");
+
+            AllAnswers = new List<Answer>() { FirstVar, SecondVar };
+        }
         public QuestionPattern(string question, string var1, string var2, string var3, string var4, string var5)
         {
             this._question = question;
@@ -51,6 +58,7 @@ namespace Test_creating_app.Models
         public string Question
         {
             get { return _question; }
+            set { value = _question; }
         }
 
         //Экземпляры класса Answer, которые содержат 2 свойства: Content и IsCorrect

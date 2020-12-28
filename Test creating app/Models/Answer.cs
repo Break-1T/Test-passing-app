@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Test_creating_app.Models
 {
-    class Answer
+    public class Answer
     {
         public Answer(string answer)
         {

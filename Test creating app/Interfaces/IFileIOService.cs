@@ -5,7 +5,7 @@ using Test_creating_app.Models;
 
 namespace Test_creating_app.Interfaces
 {
-    interface IFileIOService <T>
+    public interface IFileIOService <T>
     {
         public T LoadData();
         public void SaveData(T myList);
